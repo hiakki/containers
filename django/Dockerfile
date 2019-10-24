@@ -1,4 +1,7 @@
 FROM python:3.5.7-alpine3.10
+ADD VERSION .
+MAINTAINER Akshay Gupta
+LABEL maintainer="hy.akshay@gmail.com"
 
 COPY ./app /usr/app
 COPY run_django.sh /run_django.sh
