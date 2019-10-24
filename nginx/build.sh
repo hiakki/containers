@@ -3,7 +3,7 @@
 # docker hub username
 USERNAME=hiakki
 # image name
-IMAGE=my-django
+IMAGE=nginx_on_alpine
 
 loc=$(dirname "$0")
 cd $PWD/$loc
