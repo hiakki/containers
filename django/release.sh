@@ -4,7 +4,7 @@
 USERNAME=hiakki
 
 # image name
-IMAGE=my-django
+IMAGE=django_on_alpine
 
 loc=$(dirname "$0")
 cd $PWD/$loc
