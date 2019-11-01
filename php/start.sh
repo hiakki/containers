@@ -2,7 +2,7 @@
 
 sleep 5
 
-/usr/sbin/php-fpm7 -D
+/usr/sbin/php-fpm* -D
 
 status=$?
 if [ $status -ne 0 ]; then
