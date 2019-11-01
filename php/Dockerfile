@@ -5,4 +5,8 @@ LABEL maintainer="hy.akshay@gmail.com"
 
 RUN docker-php-ext-install mysqli
 
-CMD ['php-fpm']
+COPY ./start.sh /start.sh
+
+RUN chmod +x /start.sh
+
+CMD ['sh','-c','/start.sh']
