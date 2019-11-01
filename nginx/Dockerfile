@@ -3,7 +3,6 @@ ADD VERSION .
 MAINTAINER Akshay Gupta
 LABEL maintainer="hy.akshay@gmail.com"
 
-COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 COPY ./run_nginx.sh /run_nginx.sh
 COPY ./start.sh /start.sh
 
