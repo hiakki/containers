@@ -1,0 +1,32 @@
+FROM alpine
+
+RUN apk update
+RUN apk add     tor \
+		netcat-openbsd \
+		haproxy \
+		privoxy \
+		npm \
+		git \
+		bash \
+		sudo
+RUN set -xe \
+    && apk add --no-cache build-base openssl \
+    && wget https://github.com/jech/polipo/archive/master.zip -O polipo.zip \
+    && unzip polipo.zip \
+    && cd polipo-master \
+    && make \
+    && install polipo /usr/local/bin/ \
+    && cd .. \
+    && rm -rf polipo.zip polipo-master \
+    && mkdir -p /usr/share/polipo/www /var/cache/polipo \
+    && apk del build-base openssl
+RUN npm install -g http-proxy-to-socks
+RUN git clone https://github.com/trimstray/multitor
+RUN sh multitor/setup.sh install
+RUN /bin/bash -c multitor    --init 10 \
+		--user root \
+		--socks-port 9000 \
+		--control-port 9900 \
+		--proxy hpts \
+		--haproxy
+WORKDIR /root/multitor
